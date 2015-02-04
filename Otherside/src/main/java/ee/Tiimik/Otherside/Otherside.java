@@ -25,8 +25,7 @@ import ee.Tiimik.Otherside.lib.Constants;
 
 @Mod(modid = Constants.MODID, name=Constants.MODNAME, version=Constants.MODVER)
 public class Otherside {
-	//@Instance(Constants.MODID)
-	//@SidedProxy(clientSide = Constants.CLIENTSIDE, serverSide = Constants.SERVERSIDE);
+
 	@SidedProxy(clientSide="ee.Tiimik.Otherside.Proxy.ClientProxy", serverSide="ee.Tiimik.Otherside.Proxy.ServerProxy")
     public static CommonProxy proxy;
 	public static Otherside instance; 
