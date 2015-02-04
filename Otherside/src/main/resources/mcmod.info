@@ -1,0 +1,16 @@
+[
+{
+  "modid": "otherside",
+  "name": "Otherside Mod",
+  "description": "ModPack specific mod",
+  "version": "0.3b",
+  "mcversion": "1.7,10",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Tiimik"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
