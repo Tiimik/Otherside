@@ -6,9 +6,11 @@ import net.minecraft.util.ChatComponentText;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
 import ee.Tiimik.Otherside.CreateSpawn;
 import ee.Tiimik.Otherside.CreateSpawn2;
 import ee.Tiimik.Otherside.ExtPlayer;
+import ee.Tiimik.Otherside.network.client.SyncPlayerPropsMessage;
 
 public class miskievent {
 	public EntityPlayer player = null;
@@ -20,7 +22,13 @@ public class miskievent {
 		if (event.player instanceof EntityPlayer) {
 			System.out.println("EVENT HAPPENING - PLAYER LOGGING IN!");
 ////ExtPlayer.loadNBTData(event.player.getEntityData());
-			//ExtPlayer.get(player).loadNBTData(event.player.getEntityData());
+			try{
+				ExtPlayer.get(event.player).loadNBTData(event.player.getEntityData());
+			}
+			catch (Exception e){
+				System.out.println("NBT data read error:"+e);
+			}
+	//		SyncPlayerPropsMessage.process(ExtPlayer.get(player), Side.SERVER); 
 			if(ExtPlayer.playerSpawned() == false)
 			{
 				int PspawnX = 100;
@@ -31,6 +39,7 @@ public class miskievent {
 				p.setPositionAndUpdate(PspawnX, PspawnY, PspawnZ);
 				p.worldObj.setSpawnLocation(PspawnX, PspawnY, PspawnZ);
 				p.addChatMessage(new ChatComponentText("Spawn should be set now"));
+				//ExtPlayer.
 			//	ExtPlayer.get(player).saveNBTData(event.player.getEntityData());
 				if(ExtPlayer.playerSpawned() == false)
 				{}
