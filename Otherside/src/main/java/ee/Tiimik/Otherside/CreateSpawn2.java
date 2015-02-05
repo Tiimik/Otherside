@@ -43,7 +43,7 @@ public class CreateSpawn2 {
 				world.setBlock(x,globalSpawnY+6,z, Blocks.dirt, 0, 2);
 			}
 		}
-		ExtPlayer.SetSpawnData(true, newSpawnX, newSpawnZ, globalSpawnY);
+		ExtPlayer.SetSpawnData(true, newSpawnX, globalSpawnY, newSpawnZ);
 
 
 	}
