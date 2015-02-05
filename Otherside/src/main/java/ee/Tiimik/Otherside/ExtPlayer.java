@@ -26,6 +26,13 @@ public class ExtPlayer implements IExtendedEntityProperties
 		this.PlayerSpawnX = 0;
 		this.PlayerSpawnY = 0;
 		this.PlayerSpawnZ = 0;
+		try{
+			this.loadNBTData(player.getEntityData());
+		}
+		catch (Exception e) {
+			System.out.println("NBT data read error:"+e);
+		}
+		
 	}
 
 	/**
@@ -69,7 +76,8 @@ public class ExtPlayer implements IExtendedEntityProperties
 		
 		// Finally, set the tag with our unique identifier:
 		compound.setTag(EXT_PROP_NAME, properties);
-		System.out.println("ExtPlayer data saved!");
+		System.out.println("ExtPlayer data saved!" + ExtPlayer.PlayerRelocated + "; X:"+ExtPlayer.PlayerSpawnX + "; Y:"+ExtPlayer.PlayerSpawnY + "; Z:"+ExtPlayer.PlayerSpawnZ);
+		
 	}
 
 	public final void loadNBTData(NBTTagCompound compound) {
@@ -78,10 +86,10 @@ public class ExtPlayer implements IExtendedEntityProperties
 		NBTTagCompound properties = (NBTTagCompound) compound.getTag(EXT_PROP_NAME);
 	//	inventory.readFromNBT(properties);
 		//player.getDataWatcher().updateObject(MANA_WATCHER, properties.getInteger("CurrentMana"));
-		ExtPlayer.PlayerRelocated = properties.getBoolean("MaxMana");
-		ExtPlayer.PlayerSpawnX = properties.getInteger("PlayerSpawnX");
-		ExtPlayer.PlayerSpawnY = properties.getInteger("PlayerSpawnY");
-		ExtPlayer.PlayerSpawnZ = properties.getInteger("PlayerSpawnZ");
+		PlayerRelocated = properties.getBoolean("MaxMana");
+		PlayerSpawnX = properties.getInteger("PlayerSpawnX");
+		PlayerSpawnY = properties.getInteger("PlayerSpawnY");
+		PlayerSpawnZ = properties.getInteger("PlayerSpawnZ");
 		System.out.println("ExtPlayer data LOADED: Player located: " + ExtPlayer.PlayerRelocated + "; X:"+ExtPlayer.PlayerSpawnX + "; Y:"+ExtPlayer.PlayerSpawnY + "; Z:"+ExtPlayer.PlayerSpawnZ);
 		
 	}
