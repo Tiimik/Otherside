@@ -10,7 +10,7 @@ import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import cpw.mods.fml.relauncher.Side;
-import ee.Tiimik.Otherside.Otherside;
+import ee.Tiimik.Otherside.Otherside_main;
 
 /**
  * 
@@ -94,7 +94,7 @@ public abstract class AbstractMessage<T extends AbstractMessage<T>> implements I
 		if (!msg.isValidOnSide(ctx.side)) {
 			throw new RuntimeException("Invalid side " + ctx.side.name() + " for " + msg.getClass().getSimpleName());
 		}
-		msg.process(Otherside.proxy.getPlayerEntity(ctx), ctx.side);
+		msg.process(Otherside_main.proxy.getPlayerEntity(ctx), ctx.side);
 		return null;
 	}
 

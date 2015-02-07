@@ -1,4 +1,4 @@
-package ee.Tiimik.Otherside;
+package ee.Tiimik.Otherside.Generators;
 
 import java.util.Random;
 
@@ -8,6 +8,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import cpw.mods.fml.common.IWorldGenerator;
+import ee.Tiimik.Otherside.Otherside_main;
 
 public class WorldGeneratorAirFill implements IWorldGenerator {
 
@@ -21,7 +22,7 @@ public class WorldGeneratorAirFill implements IWorldGenerator {
 	    }
 	}
 	private void GenerateOverworld(Random random, int x, int z, World world) {
-		addOres(Otherside.blockTest, world, random, x, z, 1, 20, 10, 50, 70, Blocks.dirt);
+		addOres(Otherside_main.blockTest, world, random, x, z, 1, 20, 10, 50, 70, Blocks.dirt);
 		
     }
  

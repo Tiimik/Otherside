@@ -7,7 +7,7 @@ import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
-import ee.Tiimik.Otherside.Otherside;
+import ee.Tiimik.Otherside.Otherside_main;
 import ee.Tiimik.Otherside.lib.Constants;
 import ee.Tiimik.Otherside.network.client.SyncPlayerPropsMessage;
 
@@ -55,7 +55,7 @@ public class PacketDispatcher
 	//	registerMessage(OpenGuiMessage.class);
 
 		// If you don't want to make a 'registerMessage' method, you can do it directly:
-		//PacketDispatcher.dispatcher.registerMessage(SyncPlayerPropsMessage.class, SyncPlayerPropsMessage.class, packetId++, Side.CLIENT);
+		PacketDispatcher.dispatcher.registerMessage(SyncPlayerPropsMessage.class, SyncPlayerPropsMessage.class, packetId++, Side.CLIENT);
 		//PacketDispatcher.dispatcher.registerMessage(OpenGuiMessage.class, OpenGuiMessage.class, packetId++, Side.SERVER);
 
 		// The following two packets are not used in this demo, but have been used in my other mods

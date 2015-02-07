@@ -1,4 +1,4 @@
-package ee.Tiimik.Otherside;
+package ee.Tiimik.Otherside.Generators;
 
 import java.util.Random;
 
@@ -11,7 +11,7 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 import cpw.mods.fml.common.IWorldGenerator;
 import ee.Tiimik.Otherside.Configs.Configs;
 
-public class WGtest implements IWorldGenerator {
+public class test_WG implements IWorldGenerator {
 
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {

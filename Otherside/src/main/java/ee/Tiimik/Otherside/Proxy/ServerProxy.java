@@ -5,8 +5,8 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import ee.Tiimik.Otherside.EventsHandlers.miskievent;
-import ee.Tiimik.Otherside.EventsHandlers.miskievent2;
+import ee.Tiimik.Otherside.EventsHandlers.EventHandler_Spawning;
+import ee.Tiimik.Otherside.EventsHandlers.test_miskievent2;
 
 public class ServerProxy extends CommonProxy {
 	

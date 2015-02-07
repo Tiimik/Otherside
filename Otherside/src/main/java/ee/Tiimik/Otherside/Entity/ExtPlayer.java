@@ -1,4 +1,4 @@
-package ee.Tiimik.Otherside;
+package ee.Tiimik.Otherside.Entity;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,10 +15,10 @@ public class ExtPlayer implements IExtendedEntityProperties
 	public final static String EXT_PROP_NAME = "ExtPlayer";
 
 	private final EntityPlayer player;
-	private static boolean PlayerRelocated = false;
-	private static int PlayerSpawnX;
-	private static int PlayerSpawnY;
-	private static int PlayerSpawnZ;
+	private boolean PlayerRelocated = false;
+	private int PlayerSpawnX;
+	private int PlayerSpawnY;
+	private int PlayerSpawnZ;
 
 	public ExtPlayer(EntityPlayer player) {
 		this.player = player;
@@ -26,12 +26,6 @@ public class ExtPlayer implements IExtendedEntityProperties
 		this.PlayerSpawnX = 0;
 		this.PlayerSpawnY = 0;
 		this.PlayerSpawnZ = 0;
-		try{
-			this.loadNBTData(player.getEntityData());
-		}
-		catch (Exception e) {
-			System.out.println("NBT data read error:"+e);
-		}
 		
 	}
 
@@ -69,14 +63,14 @@ public class ExtPlayer implements IExtendedEntityProperties
 		
 		// Write everything to our new tag:
 		//inventory.writeToNBT(properties);
-		properties.setBoolean("PlayerRelocated", ExtPlayer.PlayerRelocated);
-		properties.setInteger("PlayerSpawnX", ExtPlayer.PlayerSpawnX);
-		properties.setInteger("PlayerSpawnY", ExtPlayer.PlayerSpawnY);
-		properties.setInteger("PlayerSpawnZ", ExtPlayer.PlayerSpawnZ);
+		properties.setBoolean("PlayerRelocated", PlayerRelocated);
+		properties.setInteger("PlayerSpawnX", PlayerSpawnX);
+		properties.setInteger("PlayerSpawnY", PlayerSpawnY);
+		properties.setInteger("PlayerSpawnZ", PlayerSpawnZ);
 		
 		// Finally, set the tag with our unique identifier:
 		compound.setTag(EXT_PROP_NAME, properties);
-		System.out.println("ExtPlayer data saved!" + ExtPlayer.PlayerRelocated + "; X:"+ExtPlayer.PlayerSpawnX + "; Y:"+ExtPlayer.PlayerSpawnY + "; Z:"+ExtPlayer.PlayerSpawnZ);
+		System.out.println("ExtPlayer data saved!" + PlayerRelocated + "; X:"+PlayerSpawnX + "; Y:"+PlayerSpawnY + "; Z:"+PlayerSpawnZ);
 		
 	}
 
@@ -86,23 +80,24 @@ public class ExtPlayer implements IExtendedEntityProperties
 		NBTTagCompound properties = (NBTTagCompound) compound.getTag(EXT_PROP_NAME);
 	//	inventory.readFromNBT(properties);
 		//player.getDataWatcher().updateObject(MANA_WATCHER, properties.getInteger("CurrentMana"));
-		PlayerRelocated = properties.getBoolean("MaxMana");
+		PlayerRelocated = properties.getBoolean("PlayerRelocated");
 		PlayerSpawnX = properties.getInteger("PlayerSpawnX");
 		PlayerSpawnY = properties.getInteger("PlayerSpawnY");
 		PlayerSpawnZ = properties.getInteger("PlayerSpawnZ");
-		System.out.println("ExtPlayer data LOADED: Player located: " + ExtPlayer.PlayerRelocated + "; X:"+ExtPlayer.PlayerSpawnX + "; Y:"+ExtPlayer.PlayerSpawnY + "; Z:"+ExtPlayer.PlayerSpawnZ);
+		SetSpawnData(properties.getBoolean("PlayerRelocated"), properties.getInteger("PlayerSpawnX"), properties.getInteger("PlayerSpawnY"), properties.getInteger("PlayerSpawnZ"));
+		System.out.println("ExtPlayer data LOADED: Player located: " + PlayerRelocated + "; X:"+PlayerSpawnX + "; Y:"+PlayerSpawnY + "; Z:"+PlayerSpawnZ);
 		
 	}
-	public static boolean playerSpawned(){
+	public final boolean playerSpawned(){
 		//ExtPlayer.loadNBTData(compound);
-		System.out.println("Plocated" + ExtPlayer.PlayerRelocated + "; X:"+ExtPlayer.PlayerSpawnX + "; Y:"+ExtPlayer.PlayerSpawnY + "; Z:"+ExtPlayer.PlayerSpawnZ);
+		//System.out.println("Plocated" + PlayerRelocated + "; X:"+PlayerSpawnX + "; Y:"+PlayerSpawnY + "; Z:"+PlayerSpawnZ);
 		return PlayerRelocated;
 	}
-	public static final void SetSpawnData(boolean relocTrue, int PSX, int PSY, int PSZ){
-		ExtPlayer.PlayerRelocated = relocTrue;
-		ExtPlayer.PlayerSpawnX = PSX;
-		ExtPlayer.PlayerSpawnY = PSY;
-		ExtPlayer.PlayerSpawnZ = PSZ;
+	public final void SetSpawnData(boolean relocTrue, int PSX, int PSY, int PSZ){
+		PlayerRelocated = relocTrue;
+		PlayerSpawnX = PSX;
+		PlayerSpawnY = PSY;
+		PlayerSpawnZ = PSZ;
 	}
 
 	@Override

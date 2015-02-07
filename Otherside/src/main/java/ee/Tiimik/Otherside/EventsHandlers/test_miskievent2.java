@@ -7,7 +7,7 @@ import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 
-public class miskievent2 {
+public class test_miskievent2 {
 /*	public final static String OTHERSIDE_DATA_SPAWNED = "OthersideDataSpawned";
 	public EntityPlayer player = null;
 	public static String playerRelocationInfo;

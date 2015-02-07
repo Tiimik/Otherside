@@ -6,7 +6,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.PacketBuffer;
 import cpw.mods.fml.relauncher.Side;
-import ee.Tiimik.Otherside.ExtPlayer;
+import ee.Tiimik.Otherside.Entity.ExtPlayer;
 import ee.Tiimik.Otherside.network.AbstractMessage.AbstractClientMessage;
 
 /**

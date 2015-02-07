@@ -1,15 +1,17 @@
-package ee.Tiimik.Otherside;
+package ee.Tiimik.Otherside.Generators;
 
+import ee.Tiimik.Otherside.Entity.ExtPlayer;
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 
-public class CreateSpawn2 {
-
-	public static final void generate(World world, int newSpawnX, int globalSpawnY, int newSpawnZ) {
-		//newSpawnX = 100;
-		//newSpawnZ = 100;
-	//	globalSpawnY = 55;
+public class CreateSpawn {
+	
+	public static final void generate(World world, int newSpawnX, int globalSpawnY, int newSpawnZ, EntityPlayer player) {
+		ExtPlayer props = ExtPlayer.get(player);
+		
 		System.out.println("Creating spawn!");
 		//Load a 3x3 around spawn to make sure that it populates and calls our hooks.
 		if (world.isRemote && world instanceof WorldServer)
@@ -43,7 +45,8 @@ public class CreateSpawn2 {
 				world.setBlock(x,globalSpawnY+6,z, Blocks.dirt, 0, 2);
 			}
 		}
-		ExtPlayer.SetSpawnData(true, newSpawnX, globalSpawnY, newSpawnZ);
+		
+		props.SetSpawnData(true, newSpawnX, globalSpawnY, newSpawnZ);
 
 
 	}

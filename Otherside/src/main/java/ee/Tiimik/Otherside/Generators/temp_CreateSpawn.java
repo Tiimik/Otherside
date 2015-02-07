@@ -1,4 +1,4 @@
-package ee.Tiimik.Otherside;
+package ee.Tiimik.Otherside.Generators;
 
 import static net.minecraftforge.common.config.Configuration.CATEGORY_GENERAL;
 
@@ -12,7 +12,7 @@ import net.minecraft.world.storage.WorldInfo;
 import net.minecraftforge.common.config.Property;
 import cpw.mods.fml.common.IWorldGenerator;
 
-public class CreateSpawn implements IWorldGenerator {
+public class temp_CreateSpawn implements IWorldGenerator {
 	public static int newSpawnX;
 	public static int newSpawnZ;
 	public static int globalSpawnY;
